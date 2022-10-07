@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 
+
 const Login = () => {
 
   const { register, handleSubmit } = useForm();
@@ -28,8 +29,11 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div style={{textAlign: "center"}}>
+      <h1 className="mb-5">Login</h1>
+      <p>Use this information to login</p>
+      <p>Email: carlosc@gmail.com</p>
+      <p className="mb-5">Password: carlos1234</p>
       <Form onSubmit={handleSubmit(submit)}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>

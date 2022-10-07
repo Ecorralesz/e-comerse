@@ -1,16 +1,31 @@
-import React from "react";
-import { Row, Col, ListGroup } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { Row, Col, ListGroup, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { addCartThunk } from "../slices/purchases.slice";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const productList = useSelector((state) => state.products);
+  const [ rate, setRate ] = useState(0);
   const productDetail = productList.find((news) => news.id === Number(id));
   const navigate = useNavigate();
   const relatedProducts = productList.filter(
     (product) => product.category.id === productDetail?.category.id
   );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setRate(0)
+  }, [id]);
+
+  const addToCart = () => {
+    const cart = {
+        id: id,
+        quantity: rate
+    } 
+    dispatch(addCartThunk(cart));
+  }
 
   return (
     <Row>
@@ -27,6 +42,28 @@ const ProductDetail = () => {
         <p>{productDetail?.description}</p>
         <br />
         <p> <b>Price:</b> {productDetail?.price}</p>
+        <div className="rate">
+        <Button 
+        className="me-3"
+        onClick={() => setRate(rate-1)}
+        >
+          -
+        </Button>
+        {rate}
+        <Button
+        onClick={() => setRate(rate+1)}
+        className="ms-3"
+        >
+          +
+        </Button>
+        <br />
+        <Button
+        className="mt-3"
+        onClick={addToCart}
+        >
+          Add to Cart
+        </Button>
+        </div>
         <br />
         <img className="img-fluid" src={productDetail?.productImgs[0]} width={"200px"} height={"200px"} style={{marginRight: "100px"}}/>
         <img className="img-fluid" src={productDetail?.productImgs[1]} width={"200px"} height={"200px"} style={{marginRight: "100px"}}/>

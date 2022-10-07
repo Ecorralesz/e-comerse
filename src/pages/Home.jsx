@@ -59,7 +59,7 @@ const Home = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://www.tech-hounds.com/wp-content/uploads/2022/03/Technology.jpg"
+            src="https://www.comstar.com.pk/assets/files/blog/future_technology_prospects.png"
             alt="First slide"
             height={"500px"}
           />
@@ -75,7 +75,7 @@ const Home = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://www.comstar.com.pk/assets/files/blog/future_technology_prospects.png"
+            src="https://www.tech-hounds.com/wp-content/uploads/2022/03/Technology.jpg"
             alt="Third slide"
             height={"500px"}
           />
@@ -111,7 +111,7 @@ const Home = () => {
               <Col key={product.id}>
                 <Card
                   onClick={() => navigate(`/product/${product.id}`)}
-                  style={{ height: "100%" }}
+                  style={{ height: "100%", padding: "30px" }}
                 >
                   <Card.Img variant="top" src={product.productImgs[0]} />
                   <Card.Body>
