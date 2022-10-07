@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, ListGroup, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { addCartThunk } from "../slices/purchases.slice";
+import { addCartThunk } from "../slices/cart.slice";
 
 const ProductDetail = () => {
   const { id } = useParams();

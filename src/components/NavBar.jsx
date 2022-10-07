@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Col, Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import CartSideBar from "./CartSideBar";
+import "../App.css"
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -28,24 +29,38 @@ const NavBar = () => {
         <Container>
           <Col>
             <Navbar.Brand to={"/"} as={Link}>
-              QAStore
+              E-Commerse
             </Navbar.Brand>
           </Col>
 
           <Col>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
-                <Nav.Link to={"/login"} as={Link}>
+              <Nav 
+              className="ms-auto"
+              >
+                <Nav.Link 
+                to={"/login"} 
+                as={Link} 
+                style={{border: "solid 1px white"}}
+                className="me-2"
+                >
                   Login
                 </Nav.Link>
-                <Nav.Link to={"/purchases"} as={Link}>
+                <Nav.Link 
+                to={"/purchases"} 
+                as={Link} 
+                style={{border: "solid 1px white"}}
+                className="me-2"
+                >
                   Purchases
                 </Nav.Link>
                 <Nav.Link
+                className="me-2"
                 onClick={handleShow}
+                style={{border: "solid 1px white"}}
                 >Cart</Nav.Link>
-                <Nav.Link onClick={logout}>Logout</Nav.Link>
+                <Nav.Link onClick={logout} style={{border: "solid 1px white"}}>Logout</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Col>
