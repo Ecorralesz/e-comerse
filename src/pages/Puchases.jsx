@@ -14,10 +14,14 @@ const Puchases = () => {
     dispatch(getPurchasesThunk());
   }, []);
 
-  console.log(purchases)
+
 
   return (
     <div>
+      <h2
+      onClick={() => navigate('/')}
+      style={{cursor: "pointer"}}
+      >Home</h2>
       <h1>purchases</h1>
       <ListGroup>
         {
@@ -28,18 +32,21 @@ const Puchases = () => {
               {
                 purchase.cart.products.map(product => 
                   <Row
+                  style={{cursor: "pointer", padding: "15px"}}
+                  key={product.id}
+                  className='mb-2'
                   onClick={() => navigate(`/product/${product.id}`)}
-                  className='border.bt'
                   >
-                    <Col md={3}>
-                    <h4>{product.title}</h4>
+                    <Col
+                    className='mb-5'
+                    md={3}>
+                    <h5>{product.title}</h5>
                     <p> Brand: {product.brand}</p>
-                    <p> Price: {product.price}</p>
                     <p> Quantity: {product.quantity}</p>
                     
                     </Col>
                     <Col>
-                    <p>{product.description}</p>
+                    <p> Price: ${product.price}</p>
                     </Col>
                   </Row>
                   )

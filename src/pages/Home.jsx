@@ -7,6 +7,7 @@ import axios from "axios";
 import {
   Button,
   Card,
+  Carousel,
   Col,
   Form,
   InputGroup,
@@ -51,52 +52,82 @@ const Home = () => {
   };
 
   return (
-    <Row>
-      <Col lg={3}>
-        <ListGroup className="mb-3">
-          {categories.map((category) => (
-            <ListGroup.Item
-              key={category.id}
-              onClick={() => filteredCategory(category.id)}
-              style={{ cursor: "pointer" }}
-            >
-              {category.name}
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      </Col>
-      <Col>
-        <InputGroup className="mb-3">
-          <Form.Control
-            placeholder="Search Product"
-            onChange={(e) => setSearchValue(e.target.value)}
-            value={searchValue}
+    <>
+      <Carousel
+      style={{marginBottom: "20px"}}      
+      >
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://www.tech-hounds.com/wp-content/uploads/2022/03/Technology.jpg"
+            alt="First slide"
+            height={"500px"}
           />
-          <Button variant="outline-secondary" onClick={searchProduct}>
-            Button
-          </Button>
-        </InputGroup>
-        <Row xs={1} md={2} xl={3}className="g-4">
-          {productFiltered.map((product) => (
-            <Col key={product.id}>
-              <Card
-                onClick={() => navigate(`/product/${product.id}`)}
-                style={{height: "100%"}}
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://thumbs.dreamstime.com/b/new-skills-knowledge-webinar-training-business-internet-technology-concept-new-skills-knowledge-webinar-training-business-internet-121274023.jpg"
+            alt="Second slide"
+            height={"500px"}
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://www.comstar.com.pk/assets/files/blog/future_technology_prospects.png"
+            alt="Third slide"
+            height={"500px"}
+          />
+        </Carousel.Item>
+      </Carousel>
+      <Row>
+        <Col lg={3}>
+          <ListGroup className="mb-3">
+            {categories.map((category) => (
+              <ListGroup.Item
+                key={category.id}
+                onClick={() => filteredCategory(category.id)}
+                style={{ cursor: "pointer" }}
               >
-                <Card.Img variant="top" src={product.productImgs[0]}/>
-                <Card.Body>
-                  <Card.Title>{product.title}</Card.Title>
-                  <Card.Text>
-                  {product.description}
-                  {product.price}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Col>
-    </Row>
+                {category.name}
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </Col>
+        <Col>
+          <InputGroup className="mb-3">
+            <Form.Control
+              placeholder="Search Product"
+              onChange={(e) => setSearchValue(e.target.value)}
+              value={searchValue}
+            />
+            <Button variant="outline-secondary" onClick={searchProduct}>
+              Button
+            </Button>
+          </InputGroup>
+          <Row xs={1} md={2} xl={3} className="g-4">
+            {productFiltered.map((product) => (
+              <Col key={product.id}>
+                <Card
+                  onClick={() => navigate(`/product/${product.id}`)}
+                  style={{ height: "100%" }}
+                >
+                  <Card.Img variant="top" src={product.productImgs[0]} />
+                  <Card.Body>
+                    <Card.Title>{product.title}</Card.Title>
+                    <Card.Text>
+                      {product.description}
+                      {product.price}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Col>
+      </Row>
+    </>
   );
 };
 
