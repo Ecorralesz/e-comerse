@@ -54,6 +54,7 @@ const Home = () => {
   return (
     <>
       <Carousel
+      className="Carousel"
       style={{marginBottom: "20px"}}      
       >
         <Carousel.Item>
